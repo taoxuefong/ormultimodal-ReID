@@ -1,4 +1,4 @@
-# PRCV Multi-Modal Person Re-identification
+# Multi-Modal Person Re-identification
 
 本项目是基于UNIReID-main修改的多模态人员重识别系统，支持红外、彩铅、素描、文本四种模态检索RGB图像。
 
@@ -18,7 +18,7 @@
 ## 数据集结构
 
 ```
-/data/taoxuefeng/PRCV/
+/data/
 ├── train/
 │   ├── nir/          # 红外图像
 │   ├── cp/           # 彩铅图像
@@ -115,18 +115,6 @@ python test_prcv.py --output_dir ./outputs --checkpoint path/to/checkpoint.pth
 - ID分类损失
 - 各模态独立损失
 
-## 输出结果
-
-测试完成后会生成`ranking_results.txt`文件，包含：
-
-```
-query_idx    query_type       ranking_list_idx
-0            onemodal_NIR      [5,9,856,126,324,1768,…]
-1            onemodal_NIR      [823,456,16,94,532,…]
-...
-37196        twomodal_CP_SK    [2522,3019,25,3472,…]
-...
-```
 
 ## 性能指标
 
@@ -205,15 +193,4 @@ python test_code.py
 1. 在`MultiModalReID.forward()`中添加新损失
 2. 更新训练循环中的损失计算
 
-## 引用
-
-如果使用本项目，请引用原始UNIReID论文：
-
-```bibtex
-@article{unireid,
-  title={Towards Modality-Agnostic Person Re-identification with Descriptive Query},
-  author={...},
-  journal={...},
-  year={...}
-}
 ```
