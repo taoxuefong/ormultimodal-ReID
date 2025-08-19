@@ -1,0 +1,54 @@
+# PRCV Dataset Configuration
+dataset_name: 'PRCV'
+root_dir: '/data/taoxuefeng/PRCV/'
+
+# Model Configuration
+pretrain_choice: 'ViT-B/32'  # CLIP model variant
+img_size: [384, 128]  # Image size [height, width]
+stride_size: [32, 32]  # Stride size
+temperature: 0.07  # Temperature for contrastive learning
+
+# Training Configuration
+training: true
+num_epoch: 100
+batch_size: 32
+num_instance: 4
+num_workers: 8
+sampler: 'identity'
+
+# Learning Rate Configuration
+lr: 0.0001
+weight_decay: 0.0001
+lr_scheduler: 'cosine'
+warmup_epoch: 5
+
+# Loss Configuration
+loss_names: 'itc+id'  # Contrastive loss + ID classification
+cmm_loss_weight: 1.0
+id_loss_weight: 0.1
+
+# Multi-modal Fusion Configuration
+fusion_way: 'concat'  # 'concat', 'attention', 'weighted_sum'
+
+# Text Configuration
+text_length: 77
+nlp_aug: false
+
+# Image Augmentation
+img_aug: true
+
+# Output Configuration
+output_dir: './outputs'
+log_period: 100
+eval_period: 5
+
+# Distributed Training
+distributed: false
+local_rank: 0
+
+# Checkpoint Configuration
+resume: false
+resume_ckpt_file: ''
+
+# Test Configuration
+test_batch_size: 64
